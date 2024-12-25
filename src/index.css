@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.board {
+  @apply text-gray-100 grid grid-cols-3 grid-rows-3 relative w-[400px] h-[400px] 
+    rounded-lg bg-gradient-to-br from-[#1e293b] to-[#0f172a] shadow-lg border-4 border-cyan-600;
+}
+
+.tile {
+  @apply flex justify-center items-center text-6xl font-bold rounded-md 
+    transition-transform duration-200 bg-gray-900 text-white shadow-inner 
+    hover:scale-105 hover:bg-gray-700 hover:shadow-lg;
+}
+
+.x-hover:hover::after {
+  content: "X";
+  color: #00d1ff; /* Subtle cyan color */
+  opacity: 0.5;
+}
+
+.o-hover:hover::after {
+  content: "O";
+  color: #ff6b6b; /* Subtle red color */
+  opacity: 0.5;
+}
+
+.strike {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.strike-row-1 {
+  width: 100%;
+  height: 6px;
+  top: 16%;
+}
+.strike-row-2 {
+  width: 100%;
+  height: 6px;
+  top: 50%;
+}
+.strike-row-3 {
+  width: 100%;
+  height: 6px;
+  top: 84%;
+}
+.strike-column-1 {
+  height: 100%;
+  width: 6px;
+  left: 16%;
+}
+.strike-column-2 {
+  height: 100%;
+  width: 6px;
+  left: 50%;
+}
+.strike-column-3 {
+  height: 100%;
+  width: 6px;
+  left: 84%;
+}
+.strike-diagonal-1 {
+  width: 100%;
+  height: 6px;
+  top: 50%;
+  left: 0;
+  transform: rotate(45deg);
+}
+.strike-diagonal-2 {
+  width: 100%;
+  height: 6px;
+  top: 50%;
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+.game-over {
+  @apply text-center border border-cyan-500 border-dotted p-4 mt-6 text-xl text-cyan-400 rounded-md 
+    bg-gray-800 shadow-lg;
+}
+
+.challenge button:hover {
+  background: #051715;
+}
+
+.challenge h2 {
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #221c18;
+}
+
+.challenge-time {
+  border: 1px solid #46cebe;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem;
+}
+.result-modal {
+  @apply rounded-3xl p-8 bg-[#d7fcf8];
+}
+
+.result-modal[open] {
+  @apply animate-bounce;
+}
+.result-modal h2 {
+  @apply mt-1 text-3xl uppercase;
+}
+.result-modal p {
+  @apply mx-2 text-lg;
+}
+.result-modal p strong {
+  @apply text-[#10655b];
+}
+.result-modal form {
+  @apply text-right;
+}
+.result-modal button {
+  @apply mt-4 px-2 py-4 rounded-3xl bg-[#12352f] text-[#edfcfa] text-xl cursor-pointer;
+}
+
+.memory {
+  @apply max-w-full mx-auto my-auto w-[40%];
+}
+.membut {
+  @apply bg-none border-2 border-white px-2 py-3 text-white font-bold cursor-pointer text-lg hover:bg-red-400 hover:text-white;
+}
+.cardgrid {
+  @apply mt-[40px] grid grid-cols-4 gap-[20px];
+}
+.frontcard {
+  @apply w-[90%] h-[90%];
+}
+.backcard {
+  @apply w-[100%] h-[100%];
+}
+.card {
+  @apply relative;
+}
+.card img {
+  @apply w-full block border border-white rounded-md;
+}
+
+.card .frontcard {
+  transform: rotateY(90deg);
+  transition: all ease-in 0.3s;
+}
+.card .frontcard {
+  @apply absolute;
+}
+.flipped .frontcard {
+  transform: rotateY(0deg);
+  transition-delay: 0.3s;
+}
+.card .backcard {
+  transition: all ease-in 0.3s;
+  transition-delay: 0.3s;
+}
+.flipped .backcard {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
